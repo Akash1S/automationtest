@@ -1,9 +1,14 @@
 ---
 - name: Simple Echo Test
-  hosts: localhost
-  connection: local
+  hosts: all
   gather_facts: no
+  become: yes
 
   tasks:
     - name: Print Hello
-      ansible.builtin.shell: echo "hello"
+      ansible.builtin.shell: echo "hello from {{ inventory_hostname }}"
+      register: output
+
+    - name: Show Output
+      ansible.builtin.debug:
+        msg: "{{ output.stdout }}"
