@@ -1,14 +1,11 @@
 ---
-- name: Simple Echo Test
-  hosts: all
+- name: Create a test file
+  hosts: localhost
+  connection: local
   gather_facts: no
-  become: yes
 
   tasks:
-    - name: Print Hello
-      ansible.builtin.shell: echo "hello from {{ inventory_hostname }}"
-      register: output
-
-    - name: Show Output
-      ansible.builtin.debug:
-        msg: "{{ output.stdout }}"
+    - name: Create /tmp/hello.txt file
+      ansible.builtin.file:
+        path: /tmp/hello.txt
+        state: touch
