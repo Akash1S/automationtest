@@ -1,13 +1,9 @@
 ---
 - name: Simple Echo Test
-  hosts: all
-  become: yes
+  hosts: localhost
+  connection: local
   gather_facts: no
 
   tasks:
     - name: Print Hello
       ansible.builtin.shell: echo "hello"
-
-    - name: Display message
-      ansible.builtin.debug:
-        msg: "Playbook executed successfully"
