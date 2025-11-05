@@ -1,2 +1,5 @@
-#!/bin/bash
-echo "hello"
+name: Simple Echo Test
+hosts: all
+tasks:
+  - name: Print hello
+    shell: echo "hello"
