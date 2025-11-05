@@ -1,5 +1,13 @@
-name: Simple Echo Test
-hosts: all
-tasks:
-  - name: Print hello
-    shell: echo "hello"
+---
+- name: Simple Echo Test
+  hosts: all
+  become: yes
+  gather_facts: no
+
+  tasks:
+    - name: Print Hello
+      ansible.builtin.shell: echo "hello"
+
+    - name: Display message
+      ansible.builtin.debug:
+        msg: "Playbook executed successfully"
